@@ -2,11 +2,12 @@ body {
   margin: 0;
   font-family: Verdana, Geneva, sans-serif;
   background-color: #000;
+  color: #ec22f7;
 }
 
 .formulario {
   width: 100vw;
-  background-color: #f4cb42;
+  border-bottom: solid 5px #f4cb42;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -28,25 +29,33 @@ body {
   height: 30px;
   margin-bottom: 10px;
   padding-left: 10px;
-  width: 100%;
+  width: 60%;
+  text-align: center;
 }
 
 .btn-busca {
   height: 30px;
-  width: 50%;
+  width: 20%;
   color: white;
   text-transform: uppercase;
-  background-color: red;
+  background-color: #1a35cc;
   border: none;
+  cursor: pointer;
 }
 
-.area-noticia {
-  width: 70vw;
+.btn-busca:hover {
+  background-color: #416fba;  
+}
+
+.area-gif {
+  width: 100vw;
   margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 10px;
 }
 
-.noticia {
-  background-color: lightgrey;
-  padding: 15px;
-  margin: 15px;
+.gif {
+  padding: 5px;
 }
