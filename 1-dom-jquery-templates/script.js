@@ -1,6 +1,8 @@
 $(document).ready(function() {
+  $("#text-field").val("");
 
-  const getTweetText = $("#btn-submit").click(function(event){
+
+$("#btn-submit").click(function(event){
     event.preventDefault();
     appendTweetToList($("#text-field").val());
     $("#text-field").val("");
@@ -28,21 +30,36 @@ $(document).ready(function() {
     return `${day} de ${monthNames[monthIndex]} de ${year}`;
   }
 
-  function getNumberOfChars() {
+  function changeRemainingText() {
     let remaining = 280 - $("#text-field").val().length;
     return $("#char-count").text(`você ainda tem ${remaining} caracteres`);
 }
 
-  $("#text-field").change(function(){
-      getNumberOfChars();
-    });
-
   $("#text-field").keyup(function(){
-      getNumberOfChars();
+      changeRemainingText();
+      changeColorChars();
+  });
+
+  $("#text-field").change(function(){
+      changeRemainingText();
   });
 
   function resetNumberOfChars(){
     $("#char-count").text(`você ainda tem 280 caracteres`)
+  }
+
+  function changeColorChars(){
+    if($("#text-field").val().length >= 150) {
+      $("#text-field").addClass("text-danger");
+    } else {
+        $("#text-field").removeClass("text-danger");
+    }
+
+    if($("#text-field").val().length >= 100 && $("#text-field").val().length < 150 ) {
+      $("#text-field").addClass("text-warning");
+    } else {
+      $("#text-field").removeClass("text-warning");
+    }
   }
 
 });
