@@ -38,6 +38,7 @@ $("#btn-submit").click(function(event){
   $("#text-field").keyup(function(){
       changeRemainingText();
       changeColorChars();
+      disableTweetButton();
   });
 
   $("#text-field").change(function(){
@@ -45,23 +46,31 @@ $("#btn-submit").click(function(event){
   });
 
   function resetNumberOfChars(){
-    $("#char-count").text(`você ainda tem 280 caracteres`)
+    $("#char-count").text(`você ainda tem 280 caracteres`);
   }
 
   function changeColorChars(){
-    if($("#text-field").val().length >= 150) {
-      $("#text-field").addClass("text-danger");
-    } else {
-        $("#text-field").removeClass("text-danger");
-    }
-
-    if($("#text-field").val().length >= 100 && $("#text-field").val().length < 150 ) {
-      $("#text-field").addClass("text-warning");
-    } else {
+    if($("#text-field").val().length >= 240) {
       $("#text-field").removeClass("text-warning");
+      $("#text-field").addClass("text-danger");
+    } else if($("#text-field").val().length >= 200 && $("#text-field").val().length < 240) {
+      $("#text-field").addClass("text-warning");
+      $("#text-field").removeClass("text-danger");
+    } else {
+      $("#text-field").removeClass("text-danger text-warning");
     }
   }
 
+  function disableTweetButton(){
+    if($("#text-field").val().length > 280){
+      $("#btn-submit").addClass("disabled");
+      $("#btn-submit").attr("disabled", true);
+      console.log("disabled");
+    } else {
+      $("#btn-submit").removeClass("disabled");
+      $("#btn-submit").attr("disabled", false);
+    }
+  }
 });
   
 
